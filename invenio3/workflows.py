@@ -11,9 +11,12 @@ def task_add(obj, eng):
 def task_print(obj, eng):
     print(obj.data)
 
+def halt(obj, eng):
+    eng.halt(action="Approval")
+
 
 class MyWorkflow(object):
-    workflow = [task_add, task_print]
+    workflow = [task_add, halt, task_add, task_print]
 
 
 __all__ = ('MyWorkflow',)

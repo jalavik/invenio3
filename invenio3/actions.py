@@ -4,6 +4,8 @@
 
 from __future__ import absolute_import, print_function
 
+from flask import url_for, render_template
+
 from flask_babelex import gettext as _
 
 
@@ -12,12 +14,12 @@ class Approval(object):
 
     def __init__(self):
         self.name = _("Approve")
-        self.url = url_for("holdingpen.resolve_action")
+        self.url = url_for("invenio_workflows_ui.resolve_action")
 
     def render_mini(self, obj):
         """Method to render the minified action."""
         return render_template(
-            'workflows/actions/approval_mini.html',
+            'actions/approval_mini.html',
             message=obj.get_action_message(),
             object=obj,
             resolve_url=self.url,
