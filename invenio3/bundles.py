@@ -24,7 +24,8 @@ from __future__ import unicode_literals
 # FIXME We do not really know which theme we use
 from invenio_theme.bundles import js as _js
 
-from invenio_assets import Bundle, RequireJSFilter
+from invenio_assets import RequireJSFilter
+from flask_assets import Bundle
 
 js = Bundle(
     'js/actions/init.js',

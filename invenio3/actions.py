@@ -4,11 +4,15 @@
 
 from __future__ import absolute_import, print_function
 
+from flask_babelex import gettext as _
+
 
 class Approval(object):
     """Class representing the approval action."""
-    #name = _("Approve")
-    #url = url_for("holdingpen.resolve_action")
+
+    def __init__(self):
+        self.name = _("Approve")
+        self.url = url_for("holdingpen.resolve_action")
 
     def render_mini(self, obj):
         """Method to render the minified action."""
