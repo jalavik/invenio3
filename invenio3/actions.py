@@ -8,6 +8,8 @@ from flask import url_for, render_template
 
 from flask_babelex import gettext as _
 
+from invenio_db import db
+
 
 class Approval(object):
     """Class representing the approval action."""
@@ -51,18 +53,20 @@ class Approval(object):
             bwo.set_extra_data(extra_data)
             bwo.save()
             bwo.continue_workflow(delayed=True)
-            return {
-                "message": "Record has been accepted!",
-                "category": "success",
-            }
+            message = "Record has been accepted!"
+            category = "success"
         elif value == 'reject':
             extra_data["approved"] = False
             bwo.set_extra_data(extra_data)
             bwo.save()
             bwo.continue_workflow(delayed=True)
-            return {
-                "message": "Record has been rejected (deleted)",
-                "category": "warning",
-            }
+            message = "Record has been rejected (deleted)"
+            category = "danger"
+
+        db.session.commit()
+        return {
+            "message": message,
+            "category": category
+        }
 
 __all__ = ('Approval',)
