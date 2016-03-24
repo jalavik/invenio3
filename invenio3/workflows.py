@@ -16,7 +16,7 @@ def halt(obj, eng):
 
 
 class MyWorkflow(object):
-    workflow = [task_add, halt, task_add, task_print]
+    workflow = [task_add, halt, task_add, halt, task_print, halt]
 
 
 __all__ = ('MyWorkflow',)

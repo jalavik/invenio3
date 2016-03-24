@@ -46,24 +46,16 @@ class Approval(object):
         value = request.form.get("value", None)
 
         bwo.remove_action()
-        extra_data = bwo.get_extra_data()
-
         if value == 'accept':
-            extra_data["approved"] = True
-            bwo.set_extra_data(extra_data)
-            bwo.save()
-            bwo.continue_workflow(delayed=True)
+            bwo.extra_data["approved"] = True
             message = "Record has been accepted!"
             category = "success"
         elif value == 'reject':
-            extra_data["approved"] = False
-            bwo.set_extra_data(extra_data)
-            bwo.save()
-            bwo.continue_workflow(delayed=True)
+            bwo.extra_data["approved"] = True
             message = "Record has been rejected (deleted)"
             category = "danger"
+        bwo.continue_workflow(delayed=True)
 
-        db.session.commit()
         return {
             "message": message,
             "category": category
