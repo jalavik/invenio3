@@ -30,4 +30,31 @@ THEME_SITENAME = _("invenio3")
 SEARCH_UI_SEARCH_API = 'invenio_search_ui.api'
 SEARCH_UI_BASE_TEMPLATE = 'invenio_theme/page.html'
 
-# WORKFLOWS_SNAPSHOTS_ENABLED = True
+WORKFLOWS_UI_SEARCH = dict(
+    search_index='holdingpen',
+    search_type=None,
+)
+
+WORKFLOWS_UI_REST_ENDPOINTS = dict(
+    wfui=dict(
+        pid_type='wfui',
+        pid_minter='workflow',
+        pid_fetcher='workflow',
+        search_index='holdingpen-hep',
+        search_type='hep',
+        record_class='invenio_workflows_ui.api:WorkflowUIRecord',
+        record_serializers={
+            'application/json': ('invenio_workflows_ui.serializers'
+                                 ':json_v1_response'),
+        },
+        search_serializers={
+            'application/json': ('invenio_workflows_ui.serializers'
+                                 ':json_v1_search'),
+        },
+        list_route='/holdingpen/',
+        item_route='/holdingpen/<pid_value>',
+        default_media_type='application/json',
+        max_result_window=10000,
+        # links_factory_imp=workflows_links_factory('holdingpen')
+    ),
+)

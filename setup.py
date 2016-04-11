@@ -24,13 +24,17 @@ setup(
             'invenio3 = invenio3.cli:cli'
         ],
         'invenio_workflows.workflows': [
-            'MyWorkflow = invenio3.workflows:MyWorkflow'
+            'MyWorkflow = invenio3.workflows:MyWorkflow',
+            'MyRecordWorkflow = invenio3.workflows:MyRecordWorkflow'
         ],
         'invenio_workflows_ui.actions': [
             'Approval = invenio3.actions:Approval'
         ],
         'invenio_assets.bundles': [
             'invenio3_ui_js = invenio3.bundles:js'
+        ],
+        'invenio_search.mappings': [
+            'holdingpen = invenio3.mappings'
         ],
         'invenio_base.blueprints': [
             'invenio3_main = invenio3.views:blueprint'

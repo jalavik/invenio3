@@ -16,7 +16,13 @@ def halt(obj, eng):
 
 
 class MyWorkflow(object):
+    data_type = "hep"
     workflow = [task_add, halt, task_add, halt, task_print, halt]
 
 
-__all__ = ('MyWorkflow',)
+class MyRecordWorkflow(object):
+    data_type = "hep"
+    workflow = [halt, task_print]
+
+
+__all__ = ('MyWorkflow', 'MyRecordWorkflow')
