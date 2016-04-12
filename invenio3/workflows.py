@@ -16,7 +16,7 @@ def halt(obj, eng):
 
 
 class MyWorkflow(object):
-    data_type = "hep"
+    data_type = "hp"
     workflow = [task_add, halt, task_add, halt, task_print, halt]
 
 
@@ -25,4 +25,9 @@ class MyRecordWorkflow(object):
     workflow = [halt, task_print]
 
 
-__all__ = ('MyWorkflow', 'MyRecordWorkflow')
+class MyAuthWorkflow(object):
+    data_type = "authors"
+    workflow = [halt, task_print]
+
+
+__all__ = ('MyWorkflow', 'MyRecordWorkflow', 'MyAuthWorkflow')
