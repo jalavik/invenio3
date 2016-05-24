@@ -31,22 +31,6 @@ SEARCH_UI_SEARCH_API = 'invenio_search_ui.api'
 SEARCH_UI_BASE_TEMPLATE = 'invenio_theme/page.html'
 
 
-WORKFLOWS_UI_REST_ENDPOINT = dict(
-    workflow_object_serializers={
-        'application/json': ('invenio_workflows_ui.serializers'
-                             ':json_serializer'),
-    },
-    search_serializers={
-        'application/json': ('invenio_workflows_ui.serializers'
-                             ':json_search_serializer'),
-    },
-    list_route='/workflows/',
-    item_route='/workflows/<object_id>',
-    search_index="workflows",
-    default_media_type='application/json',
-    max_result_window=10000,
-)
-
 WORKFLOWS_UI_DATA_TYPES = dict(
     hep=dict(
         search_index='workflows-hep',

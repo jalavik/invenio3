@@ -4,7 +4,7 @@
 
 from __future__ import absolute_import, print_function
 
-from invenio_workflows.signals import workflow_object_saved, workflow_started
+from invenio_workflows.signals import workflow_started
 
 
 @workflow_started.connect
