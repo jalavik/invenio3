@@ -27,9 +27,13 @@ SECRET_KEY = "xIgd8IAyQhrdQJz0YK4EaVCdjzi7DhotgEdAJaopoIV5gURnlbxm6o06PQIcyrUW76
 THEME_SITENAME = _("invenio3")
 
 
+# Files
+BASE_FILES_LOCATION = "/Users/jlavik/Envs/inspirehep/var/inspirehep-instance/files"
+
 SEARCH_UI_SEARCH_API = 'invenio_search_ui.api'
 SEARCH_UI_BASE_TEMPLATE = 'invenio_theme/page.html'
 
+ASSETS_DEBUG = False
 
 WORKFLOWS_UI_DATA_TYPES = dict(
     hep=dict(
@@ -41,3 +45,4 @@ WORKFLOWS_UI_DATA_TYPES = dict(
         search_type='authors',
     ),
 )
+WORKFLOWS_OBJECT_CLASS = "invenio_workflows_files.api.WorkflowObject"

@@ -16,7 +16,6 @@ class Approval(object):
 
     def __init__(self):
         self.name = _("Approve")
-        self.url = url_for("invenio_workflows_ui.resolve_action")
 
     def render_mini(self, obj):
         """Method to render the minified action."""
@@ -24,7 +23,6 @@ class Approval(object):
             'actions/approval_mini.html',
             message=obj.get_action_message(),
             object=obj,
-            resolve_url=self.url,
         )
 
     def render(self, obj):
@@ -32,12 +30,10 @@ class Approval(object):
         return {
             "side": render_template('actions/approval_side.html',
                                     message=obj.get_action_message(),
-                                    object=obj,
-                                    resolve_url=self.url,),
+                                    object=obj),
             "main": render_template('actions/approval_main.html',
                                     message=obj.get_action_message(),
-                                    object=obj,
-                                    resolve_url=self.url,)
+                                    object=obj)
         }
 
     def resolve(self, bwo):

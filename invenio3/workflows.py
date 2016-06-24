@@ -11,6 +11,9 @@ def task_add(obj, eng):
 def task_print(obj, eng):
     print(obj.data)
 
+def add_file(obj, eng):
+    obj.files["testfile.pdf"] = open('/Users/jlavik/Downloads/1007.5048.pdf', 'r')
+
 def halt(obj, eng):
     eng.halt(action="Approval")
 
@@ -22,7 +25,7 @@ class MyWorkflow(object):
 
 class MyRecordWorkflow(object):
     data_type = "hep"
-    workflow = [halt, task_print]
+    workflow = [add_file, halt, task_print]
 
 
 class MyAuthWorkflow(object):

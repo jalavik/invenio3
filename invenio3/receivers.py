@@ -4,12 +4,25 @@
 
 from __future__ import absolute_import, print_function
 
-from invenio_workflows.signals import workflow_started
+from flask import current_app
+
+from os.path import exists
+from os import makedirs
+
+from invenio_files_rest.models import Location
+from invenio_db import db
 
 
-@workflow_started.connect
-def workflow_saved(sender, **kwargs):
-    print("LOLOLOL")
-
-
-__all__ = ('workflow_saved',)
+def loadlocation(force=False):
+    """Load default file store location."""
+    try:
+        uri = current_app.config['BASE_FILES_LOCATION']
+        if uri.startswith('/') and not exists(uri):
+            makedirs(uri)
+        loc = Location(name='default', uri=uri, default=True, )
+        db.session.add(loc)
+        db.session.commit()
+        return loc
+    except Exception:
+        db.session.rollback()
+        raise

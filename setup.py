@@ -31,9 +31,6 @@ setup(
         'invenio_workflows_ui.actions': [
             'Approval = invenio3.actions:Approval'
         ],
-        'invenio_assets.bundles': [
-            'invenio3_ui_js = invenio3.bundles:js'
-        ],
         'invenio_search.mappings': [
             'workflows = invenio3.mappings'
         ],
@@ -43,5 +40,6 @@ setup(
     },
     install_requires=[
         'invenio-base>=1.0.0a3',
+        # invenio_workflows_ui, invenio-workflows, invenio-workflows-files
     ],
 )
